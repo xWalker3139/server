@@ -1,0 +1,98 @@
+{% extends 'my_app/home.html' %}
+
+{% block head_block %}
+<style>
+    .block:before{
+        content: '';
+        width: 100%;
+        height: 760px;
+        transform: skewY(-12deg);
+        transform-origin: 0;
+        position: absolute;
+        top: 0;
+        z-index: -6;
+        margin-bottom: 0;
+        background-image: linear-gradient(150deg, #495371 15%, #495371 70%, #495371 94%);
+    }
+    #header5{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 54px;
+        color: #fff;
+        margin-top: 15rem;
+    }
+    #image5{
+        width: 100%;
+        height: 100%;
+        margin-top: 4rem;
+    }
+    .new_block{
+        margin-top: 13rem;
+    }
+    .form-group{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <h1 id="header5">Add your best</h1>
+                <h1 id="header5" style="margin-top: 0px;">wishes post</h1>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6">
+                <img src="https://webify-13e95.kxcdn.com/demo/webify/creative/wp-content/uploads/sites/8/2019/04/hero-img-1.png" id="image5">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="new_block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-4 col-sm-6">
+                <form method="POST" action="" class="form-group" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.user }}
+                    <label for="title">Title:</label>
+                    {{ form.title }}
+                    <label for="email" style="margin-top: 14px;">Email:</label>
+                    {{ form.email }}
+                    <label for="description" style="margin-top: 14px;">Description:</label>
+                    {{ form.description }}
+                    <label for="image" style="margin-top: 14px;">Image:</label>
+                    {{ form.image }}
+                    <input type="submit" class="btn btn-outline-secondary btn-block" style="margin-top: 20px;">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="jumbotron" id="jumbotron1">
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Server</h2>
+                <p class="param4">Our feet are on the ground, but our ambitions are above the clouds. Here is how we move from the getting to know you phase to creating something remarkable.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Contact</h2>
+                <a href="" class="param4"><i class="fab fa-facebook"></i> Facebook</a>
+                <br>
+                <a href="" class="param4"><i class="fab fa-instagram" style="padding-top: 14px;"></i> Instagram</a>
+                <p class="param4" style="padding-top: 14px;"><i class="far fa-envelope"></i> E-mail: </p>
+            </div>
+        </div>
+    </div>
+    <hr style="padding-bottom: 1px;background-color: #252857;">
+    <p style="font-family: 'Montserrat', sans-serif;text-align: center;color: #BDBEC8;font-size: 19px;font-weight: bolder;margin-bottom: 0;">Sway by Server {{ date_posted }}. All Rights Reserved.</p>
+</div>
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById('user1').value = name;
+</script>
+{% endblock %}

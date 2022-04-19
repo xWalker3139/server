@@ -1,0 +1,104 @@
+{% extends 'my_app/home.html' %}
+{% load static %}
+
+{% block head_block %}
+<style>
+    .new_banner4{
+        width: 100%;
+        height: 100%;
+        background-color: #282c34;
+    }
+    #jumbotron5{
+        margin-top: 60px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #303746;
+        color: #fff;
+    }
+    #header1{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        text-align: center;
+    }
+    #header2{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        margin-top: 60px;
+        margin-left: 20px;
+        margin-bottom: 30px;
+        color: #fff;
+    }
+    .profile_pic{
+        margin: 20px auto 20px auto;
+        width: 100%;
+        height: 80%;
+        border-radius: 50%;
+    }
+    #jumbotron6{
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background-color: #303746;
+        color: #fff;
+    }
+    #header4{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+    }
+    #param1{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="new_banner4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="jumbotron" id="jumbotron5">
+                    <a href="{% url 'forum' %}" class="btn btn-outline-light btn-block" style="font-family: 'Montserrat', sans-serif;margin-bottom: 20px;"><i class="fas fa-arrow-left"></i> Back to forum</a>
+                    <hr>
+                    <h2 id="header1">Account settings</h2>
+                    <hr>
+                    <img class="profile_pic" src="{% static 'images/default_user.png' %}">
+                    <p style="font-size: 20px;font-family: 'Montserrat', sans-serif;font-weight: bolder;margin-top: 20px;">Username: {{request.user}}</p>
+                    <p style="font-size: 20px;font-family: 'Montserrat', sans-serif;font-weight: bolder;">Email: {{request.user.email}}</p>
+                    <a href="{% url 'logout_user' %}" class="btn btn-outline-danger btn-block" style="margin-top: 30px;">Logout</a>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-4 col-sm-6">
+                <h1 id="header2">Your post: {{ anunt.count }}</h1>
+                {% for i in anunt %}
+                <div class="jumbotron" id="jumbotron6">
+                    <h2 id="header4">{{ i.title }}</h2>
+                    <hr style="background-color: #fff;">
+                    <p id="param1">{{ i.description }}</p>
+                    <a href="{% url 'update_post' pk=i.pk %}" class="btn btn-outline-info">Update</a>
+                    <a href="{% url 'delete_post' pk=i.pk %}" class="btn btn-outline-danger">Delete</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" id="jumbotron1">
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Server</h2>
+                <p class="param4">Our feet are on the ground, but our ambitions are above the clouds. Here is how we move from the getting to know you phase to creating something remarkable.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Contact</h2>
+                <a href="" class="param4"><i class="fab fa-facebook"></i> Facebook</a>
+                <br>
+                <a href="" class="param4"><i class="fab fa-instagram" style="padding-top: 14px;"></i> Instagram</a>
+                <p class="param4" style="padding-top: 14px;"><i class="far fa-envelope"></i> E-mail: </p>
+            </div>
+        </div>
+    </div>
+    <hr style="padding-bottom: 1px;background-color: #252857;">
+    <p style="font-family: 'Montserrat', sans-serif;text-align: center;color: #BDBEC8;font-size: 19px;font-weight: bolder;margin-bottom: 0;">Sway by Server {{ date_posted }}. All Rights Reserved.</p>
+</div>
+{% endblock %}

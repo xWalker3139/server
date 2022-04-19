@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,400&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/0945a95cb6.js" crossorigin="anonymous"></script>
+
+    <title>Server</title>
+    {% block head_block %}
+    {% endblock %}
+    <style>
+        #nav1{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: bolder;
+            color: #fff;
+            margin-right: 20px;
+        }
+        #nav5{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: bolder;
+            color: #fff;
+            margin-right: 20px;
+        }
+        #nav2{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: bolder;
+            color: #fff;
+            margin-right: 20px;
+        }
+        #nav3{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: bolder;
+            color: #fff;
+            background-color: #473BF0;
+            border-radius: 4px;
+            text-align: center;
+            padding-left: 42px;
+            padding-right: 42px;
+            transition: 0.2s ease-in-out;
+        }
+        #nav3:hover{
+            background-color: #3429c5;
+        }
+        #nav4{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: bolder;
+            color: #fff;
+            margin-right: 20px;
+        }
+        .banner{
+            width: 100%;
+            height: 100%;
+            background-color: #161C2D;
+        }
+        .header1{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            color: #fff;
+        }
+        .param1{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            margin-top: 2rem;
+            font-size: 19px;
+            color: #7A7A7A;
+        }
+        #image1{
+            margin-top: 120px;
+            margin-bottom: 120px;
+            width: 100%;
+        }
+        .anchor1{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            font-size: 22px;
+            color: #68D585;
+            text-decoration-color: none;
+        }
+        .header2{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .hr1{
+            margin-left: 420px;
+            margin-right: 420px;
+            padding-bottom: 1px;
+            transition: 0.4s ease-in-out;
+        }
+        .my_logo:hover .header2{
+            color: #68D585;
+        }
+        .my_logo:hover .hr1{
+            margin-left: 320px;
+            margin-right: 320px;
+            background-color: #68D585;
+        }
+        #icon1{
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            background-color: #e0f0fd;
+            padding: 20px 24px 20px 24px;
+            border-radius: 6px;
+            font-size: 22px;
+            color: #61bcf5;
+        }
+        .header3{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            text-align: center;
+        }
+        .param2{
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        #my_card{
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+            transition: 0.4s ease-in-out;
+            margin-bottom: 16px;
+        }
+        #my_card:hover{
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+        }
+        .new_logo{
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        .header4{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            font-size: 44px;
+        }
+        .param3{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            color: #7A7A7A;
+            margin-top: 30px;
+        }
+        #image3{
+            width: 100%;
+            height: 100%;
+        }
+        .new_banner{
+            margin-top: 80px;
+            margin-bottom: 60px;
+        }
+        #jumbotron1{
+            background-color: #242646;
+            margin-bottom: 0;
+            padding-bottom: 24px;
+        }
+        .header5{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        .param4{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bolder;
+            color: #BDBEC8;
+            font-size: 17px;
+            text-decoration-color: none;
+        }
+    </style>
+</head>
+<body style="background-color: aliceblue;">
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #1a2136;">
+        <!-- Brand -->
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">Server</a>
+        
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" id="nav4">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'forum' %}" id="nav1">Forum</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'members' %}" id="nav2">Members</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_post' user.pk %}" id="nav5">Add a post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account' user.pk %}" id="nav3">My account</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register_user' %}" id="nav3">Sign In</a>
+                </li>
+                {% endif %}
+            </ul>
+            </div>
+        </div>
+    </nav>
+    {% block body_block %}
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <h1 class="header1" style="margin-top: 14rem;">Welcome to our</h1>
+                    <h1 class="header1" style="margin-top: 0;">community!</h1>
+                    <p class="param1">We’ve crafted intuitive tools that mean users can onboard in minutes.</p>
+                    <a href="{% url 'forum' %}" class="anchor1">View the forum <i class="fas fa-arrow-right" style="padding-left: 10px;margin-top: 30px;text-decoration: none;"></i></a>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <img src="https://www.swaytheme.com/static/wp-content/uploads/sites/3/2020/08/seo-agency1.png" id="image1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo">
+        <div class="container">
+            <div class="my_logo">
+                <h1 class="header2">Why Server?</h1>
+                <hr class="hr1">
+                <br>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="card" id="my_card">
+                        <i class="far fa-thumbs-up" id="icon1"></i>
+                        <h2 class="header3">Planning</h2>
+                        <br>
+                        <p class="param2">Imagination is more important than knowledge. Imagination encircles the world.</p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="card" id="my_card">
+                        <i class="far fa-edit" id="icon1" style="background-color: #d9f3f6;color: #5abcc8;"></i>
+                        <h2 class="header3">Blogging</h2>
+                        <br>
+                        <p class="param2">Cooperation is key to any project and our priority will always be towards friends that have a clear view</p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="card" id="my_card">
+                        <i class="far fa-flag" id="icon1" style="color: #a974dd;background-color: #f0e4fb;"></i>
+                        <h2 class="header3">Strategy</h2>
+                        <br>
+                        <p class="param2">Bring to the table win-win survival strategies to ensure proactive domination for world peace.</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="new_logo">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <h1 class="header4" style="margin-top: 30px;">The best way to connect</h1>
+                    <h1 class="header4">with your friends!</h1>
+                    <p class="param3">We made sure that the theme has everything you need to build an incredible community, and we also have ucoming features updates, so keep an eye out!.</p>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <img src="https://www.swaytheme.com/static/wp-content/uploads/sites/3/2020/08/seo-agency2.png" id="image3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="new_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <img src="https://www.swaytheme.com/static/wp-content/uploads/sites/3/2020/08/seo-agency3.png" id="image3">
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                    <h1 class="header4" style="margin-top: 40px;">Incredible Community</h1>
+                    <h1 class="header4">Pages and Features!</h1>
+                    <p class="param3">The theme has super complete profile pages with a sleek design, info boxes to show things to your friends, and a slider for easier access. You’ll also find other community pages, like newsfeed, members and more!.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron" id="jumbotron1">
+        <div class="container">
+            <div class="row" style="margin-bottom: 30px;">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <h2 class="header5">Sway</h2>
+                    <p class="param4">Our feet are on the ground, but our ambitions are above the clouds. Here is how we move from the getting to know you phase to creating something remarkable.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <h2 class="header5">Contact</h2>
+                    <a href="" class="param4"><i class="fab fa-facebook"></i> Facebook</a>
+                    <br>
+                    <a href="" class="param4"><i class="fab fa-instagram" style="padding-top: 14px;"></i> Instagram</a>
+                    <p class="param4" style="padding-top: 14px;"><i class="far fa-envelope"></i> E-mail: </p>
+                </div>
+            </div>
+        </div>
+        <hr style="padding-bottom: 1px;background-color: #252857;">
+        <p style="font-family: 'Montserrat', sans-serif;text-align: center;color: #BDBEC8;font-size: 19px;font-weight: bolder;margin-bottom: 0;">Sway by Server {{ date_posted }}. All Rights Reserved.</p>
+    </div>
+    {% endblock %}
+    <script>
+        const nav1 = document.getElementById('nav1');
+        const nav2 = document.getElementById('nav2');
+        const nav4 = document.getElementById('nav4');
+        const nav5 = document.getElementById('nav5');
+
+        nav1.addEventListener("click", function(){
+            nav1.style.color = "#54BAB9";
+        });
+
+        nav2.addEventListener("click", function(){
+            nav2.style.color = "#54BAB9";
+        })
+
+        nav4.addEventListener("click", function(){
+            nav4.style.color = "#54BAB9";
+        })
+
+        nav5.addEventListener("click", function(){
+            nav5.color.style = "#54BAB9";
+        })
+
+    </script>
+</body>
+</html>

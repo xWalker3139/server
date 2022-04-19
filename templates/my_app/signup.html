@@ -1,0 +1,72 @@
+{% extends 'my_app/home.html' %}
+
+{% block head_block %}
+<style>
+    #jumbotron3{
+        max-width: 500px;
+        margin: 140px auto;
+        border-radius: 5px;
+        padding: 25px 25px 25px 25px;
+        box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+        background-color: white;
+    }
+    .anchor2{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        text-align: center;
+        color: black;
+        font-size: 24px;
+        text-decoration: none;
+        padding-left: 46px;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="new_banner2">
+    <div class="container">
+        <div class="box" id="jumbotron3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <a href="{% url 'register_user' %}" class="anchor2">Register</a>
+                        <hr>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                        <a href="{% url 'my_app:sign_up' %}" class="anchor2">Sign Up</a>
+                        <hr>
+                    </div>
+                </div>
+                <form class="form-group" method="POST" action="">
+                    {% csrf_token %}
+                    <label for="name" style="margin-top: 10px;">Username:</label>
+                    <input type="text" class="form-control" placeholder="Username" autocomplete="off" name="username" required>
+                    <label for="password" style="margin-top: 10px;">Password:</label>
+                    <input type="password" class="form-control" placeholder="Password" autocomplete="off" name="password" required>
+                    <br>
+                    <input type="submit" class="btn btn-outline-info btn-block" value="Sign up">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" id="jumbotron1">
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Server</h2>
+                <p class="param4">Our feet are on the ground, but our ambitions are above the clouds. Here is how we move from the getting to know you phase to creating something remarkable.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Contact</h2>
+                <a href="" class="param4"><i class="fab fa-facebook"></i> Facebook</a>
+                <br>
+                <a href="" class="param4"><i class="fab fa-instagram" style="padding-top: 14px;"></i> Instagram</a>
+                <p class="param4" style="padding-top: 14px;"><i class="far fa-envelope"></i> E-mail: </p>
+            </div>
+        </div>
+    </div>
+    <hr style="padding-bottom: 1px;background-color: #252857;">
+    <p style="font-family: 'Montserrat', sans-serif;text-align: center;color: #BDBEC8;font-size: 19px;font-weight: bolder;margin-bottom: 0;">Sway by Server {{ date_posted }}. All Rights Reserved.</p>
+</div>
+{% endblock %}

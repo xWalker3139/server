@@ -1,0 +1,149 @@
+{% extends 'my_app/home.html' %}
+
+{% block head_block %}
+<style>
+    .my_banner5{
+        width: 100%;
+        height: 100%;
+        background-color: #20232a;
+    }
+    .header11{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 54px;
+        color: white;
+        padding-top: 6rem;
+    }
+    .param11{
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        font-size: 19px;
+    }
+    .form-group{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        color: #fff;
+    }
+    #jb1{
+        background-color: #303746;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .param12{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 19px;
+        color: #fff;
+    }
+    .param13{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 17px;
+        color: #fff;
+        margin: 8px 0 20px 20px;
+    }
+    #icon3{
+        margin: 20px 0 12px 20px;
+    }
+    #jumbotron6{
+        background-color: #303746;
+        margin-top: 6rem;
+    }
+    #image6{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .param14{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 20px;
+        margin-top: 20px;
+        color: #fff;
+    }
+    .param15{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 20px;
+        color: #fff;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="my_banner5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-4 col-sm-6">
+                {% for i in new_model %}
+                <h1 class="header11">{{ i.title }}</h1>
+                <hr style="background-color: #fff;">
+                <br>
+                <p class="param11">{{ i.description }}</p>
+                {% endfor %}
+                <br>
+                {% for data in comment_model %}
+                <div class="jumbotron" id="jb1">
+                    <p class="param12"><i class="fas fa-user"></i> {{ data.first_name }} {{ data.last_name }}</p>
+                    <hr style="background-color: #fff;">
+                    <p class="param13">{{ data.comment }}</p>
+                </div>
+                {% endfor %}
+                <br>
+                <form class="form-group" method="POST" action="">
+                    {% csrf_token %}
+                    {{ form.post }}
+                    <div class="row">
+                        <div class="col-lg-6 col-md-4 col-sm-6">
+                            <label for="f_name">First name:</label>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="col-lg-6 col-md-4 col-sm-6">
+                            <label for="l_name">Last name:</label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                    <label for="comment" style="margin-top: 14px;">Comment:</label>
+                    {{ form.comment }}
+                    <br>
+                    <input type="submit" class="btn btn-outline-light btn-block" value="Submit">
+                    <br>
+                </form>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="jumbotron" id="jumbotron6">
+                    {% for data in new_model %}
+                    <img src="{{ data.image.url }}" id="image6">
+                    <p class="param14">User: {{ data.user }}</p>
+                    <p class="param15">Email: {{ data.email}}</p>
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron" id="jumbotron1">
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Server</h2>
+                <p class="param4">Our feet are on the ground, but our ambitions are above the clouds. Here is how we move from the getting to know you phase to creating something remarkable.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Contact</h2>
+                <a href="" class="param4"><i class="fab fa-facebook"></i> Facebook</a>
+                <br>
+                <a href="" class="param4"><i class="fab fa-instagram" style="padding-top: 14px;"></i> Instagram</a>
+                <p class="param4" style="padding-top: 14px;"><i class="far fa-envelope"></i> E-mail: </p>
+            </div>
+        </div>
+    </div>
+    <hr style="padding-bottom: 1px;background-color: #252857;">
+    <p style="font-family: 'Montserrat', sans-serif;text-align: center;color: #BDBEC8;font-size: 19px;font-weight: bolder;margin-bottom: 0;">Sway by Server {{ date_posted }}. All Rights Reserved.</p>
+</div>
+<script>
+    var name = "{{ post.id }}";
+    document.getElementById('post1').value = name;
+</script>
+{% endblock %}

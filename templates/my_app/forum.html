@@ -1,0 +1,124 @@
+{% extends 'my_app/home.html' %}
+
+{% block head_block %}
+<style>
+    .my_banner{
+        width: 100%;
+        height: 100%;
+        background-image: url("https://www.swaytheme.com/wp-content/uploads/2020/11/dots-shape.png");
+    }
+    .form-group{
+        padding-top: 90px;
+        padding-bottom: 70px;
+    }
+    #input1{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+        height: 100%;
+    }
+    #jumbotron7{
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 40px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    #jumbotron7:hover{
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    #button1{
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 19px;
+        background-color: #0693e3;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 30px 10px 30px;
+    }
+    #button1:hover{
+        background-color: #1089cf;
+    }
+    #param20{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="my_banner">
+    <div class="container">
+        <form method="POST" class="form-group" action="{% url 'search_forum' %}">
+            {% csrf_token %}
+            <div class="input-group mb-3 input-group-lg" id="input1">
+                <div class="input-group-prepend">
+                    <input type="submit" value="Search" class="btn btn-light" style="border: 1px solid #ced4da;">
+                </div>
+                <input type="search" class="form-control" placeholder="Search..." name="cautat" required autocomplete="off">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="my_banner2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-4 col-sm-6">
+                {% for i in venues %}
+                <div class="jumbotron" id="jumbotron7">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <i class="far fa-file-alt" style="display: inline-block;"></i>
+                            <p style="display: inline-block;">page</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <i class="far fa-clock" style="display: inline-block;"></i>
+                            <p style="display: inline-block;">{{ i.date }}</p>
+                        </div>
+                    </div>
+                    <h2 style="font-weight: bolder;">{{ i.title }}</h2>
+                    <br>
+                    <a href="{% url 'forum_details' pk=i.pk %}">
+                        <button type="button" id="button1">Read more</button>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <ul class="pagination">
+            {% if venues.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{venues.previous_page_number}}">Previous</a></li>
+            {% endif %}
+            <p id="param20">Page {{ venues.number }} from {{venues.paginator.num_pages}}</p>
+            {% if venues.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{venues.next_page_number}}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{venues.paginator.num_pages}}">Last</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<div class="jumbotron" id="jumbotron1">
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Sway</h2>
+                <p class="param4">Our feet are on the ground, but our ambitions are above the clouds. Here is how we move from the getting to know you phase to creating something remarkable.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <h2 class="header5">Contact</h2>
+                <a href="" class="param4"><i class="fab fa-facebook"></i> Facebook</a>
+                <br>
+                <a href="" class="param4"><i class="fab fa-instagram" style="padding-top: 14px;"></i> Instagram</a>
+                <p class="param4" style="padding-top: 14px;"><i class="far fa-envelope"></i> E-mail: </p>
+            </div>
+        </div>
+    </div>
+    <hr style="padding-bottom: 1px;background-color: #252857;">
+    <p style="font-family: 'Montserrat', sans-serif;text-align: center;color: #BDBEC8;font-size: 19px;font-weight: bolder;margin-bottom: 0;">Sway by Server {{ date_posted }}. All Rights Reserved.</p>
+</div>
+{% endblock %}
